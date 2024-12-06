@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 
 import java.util.Optional;
 
-public class KilnBlock extends BlockWithEntity {
+public class KilnBlock extends BlockWithEntity implements HeatedBlock {
 
     protected static final VoxelShape SHAPE = Block.createCuboidShape(3, 0.0, 3, 13.0, 22.0, 13.0);
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
@@ -48,10 +48,6 @@ public class KilnBlock extends BlockWithEntity {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, ModBlockEntities.KILN_BLOCK_ENTITY, KilnBlockEntity::tick);
-    }
-
-    public boolean isLit(World world, BlockPos pos){
-        return world.getBlockState(pos.down(1)).getBlock().equals(Blocks.FIRE);
     }
 
     @Override

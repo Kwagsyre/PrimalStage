@@ -2,14 +2,21 @@ package com.nanokulon.primalstage.init;
 
 import com.nanokulon.primalstage.PrimalStage;
 import com.nanokulon.primalstage.items.*;
+import com.nanokulon.primalstage.utils.RegistryUtils;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static net.minecraft.block.Blocks.*;
+
 
 public class ModItems {
+    public static Map<Identifier, Item> REGISTERED_BARKS = new HashMap<>();
 
     public static final Item STONE_PEBBLE = new PebbleItem(new FabricItemSettings());
     public static final Item PLANT_FIBER = new BaseItem(new FabricItemSettings());
@@ -75,13 +82,13 @@ public class ModItems {
         Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "tanned_pelt"), TANNED_PELT);
         Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "sandy_clay_compound"), SANDY_CLAY_COMPOUND);
         Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "kiln_brick"), KILN_BRICK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "oak_bark"), OAK_BARK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "birch_bark"), BIRCH_BARK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "jungle_bark"), JUNGLE_BARK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "dark_oak_bark"), DARK_OAK_BARK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "spruce_bark"), SPRUCE_BARK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "acacia_bark"), ACACIA_BARK);
-        Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "mangrove_bark"), MANGROVE_BARK);
+        RegistryUtils.registerBark( "oak_bark", OAK_BARK, OAK_LOG);
+        RegistryUtils.registerBark( "birch_bark", BIRCH_BARK, BIRCH_LOG);
+        RegistryUtils.registerBark( "jungle_bark", JUNGLE_BARK, JUNGLE_LOG);
+        RegistryUtils.registerBark( "dark_oak_bark", DARK_OAK_BARK, DARK_OAK_LOG);
+        RegistryUtils.registerBark("spruce_bark", SPRUCE_BARK, SPRUCE_LOG);
+        RegistryUtils.registerBark( "acacia_bark", ACACIA_BARK, ACACIA_LOG);
+        RegistryUtils.registerBark( "mangrove_bark", MANGROVE_BARK, MANGROVE_LOG);
         Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "black_wool_scrap"), BLACK_WOOL_SCRAP);
         Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "blue_wool_scrap"), BLUE_WOOL_SCRAP);
         Registry.register(Registries.ITEM, new Identifier(PrimalStage.MOD_ID, "brown_wool_scrap"), BROWN_WOOL_SCRAP);

@@ -1,11 +1,11 @@
 package com.nanokulon.primalstage.blocks.entity;
 
+import com.nanokulon.primalstage.blocks.HeatedBlock;
 import com.nanokulon.primalstage.init.ModBlockEntities;
 import com.nanokulon.primalstage.init.ModRecipes;
 import com.nanokulon.primalstage.recipes.GrillRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class PrimitiveGrillBlockEntity extends BlockEntity {
+public class PrimitiveGrillBlockEntity extends BlockEntity implements HeatedBlock {
 
     private final DefaultedList<ItemStack> itemsBeingCooked = DefaultedList.ofSize(4, ItemStack.EMPTY);
     private final RecipeManager.MatchGetter<Inventory, GrillRecipe> matchGetter = RecipeManager.createCachedMatchGetter(ModRecipes.GRILL);
@@ -55,10 +55,6 @@ public class PrimitiveGrillBlockEntity extends BlockEntity {
         if (bl) {
             PrimitiveGrillBlockEntity.markDirty(world, pos, state);
         }
-    }
-
-    public boolean isLit(World world, BlockPos pos){
-        return world.getBlockState(pos.down(1)).getBlock().equals(Blocks.FIRE);
     }
 
     public Optional<GrillRecipe> getRecipeFor(ItemStack stack) {

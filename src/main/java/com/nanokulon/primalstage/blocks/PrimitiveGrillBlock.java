@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 
 import java.util.Optional;
 
-public class PrimitiveGrillBlock extends BlockWithEntity implements BlockEntityProvider {
+public class PrimitiveGrillBlock extends BlockWithEntity implements HeatedBlock {
 
     private final VoxelShape SHAPE = Block.createCuboidShape(0.1, 0.0, 0.1, 16.0, 4.0, 16.0);
     private final int fireDamage;
@@ -47,10 +47,6 @@ public class PrimitiveGrillBlock extends BlockWithEntity implements BlockEntityP
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, ModBlockEntities.PRIMITIVE_GRILL_BLOCK_ENTITY, PrimitiveGrillBlockEntity::tick);
-    }
-
-    public boolean isLit(World world, BlockPos pos){
-        return world.getBlockState(pos.down(1)).getBlock().equals(Blocks.FIRE);
     }
 
     @Override
