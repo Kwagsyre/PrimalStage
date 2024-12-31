@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
@@ -162,6 +163,10 @@ public class PrimalStageDataGenerator implements DataGeneratorEntrypoint {
 
             getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                     .add(ModBlocks.SALT_BLOCK);
+
+            getOrCreateTagBuilder(PrimalStage.LIT_BLOCKS)
+                    .add(Blocks.FIRE)
+                    .add(Blocks.CAMPFIRE);
         }
     }
 

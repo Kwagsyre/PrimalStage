@@ -4,15 +4,16 @@ import com.google.common.collect.Maps;
 import com.nanokulon.primalstage.init.*;
 import com.nanokulon.primalstage.mixin.SheepEntityDropsAccessor;
 import com.nanokulon.primalstage.world.ModFeatures;
-import dev.architectury.platform.Mod;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -22,6 +23,8 @@ public class PrimalStage implements ModInitializer {
 
 	public static final String MOD_ID = "primalstage";
 	public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, "primal_group"));
+
+	public static final TagKey<Block> LIT_BLOCKS = TagKey.of(Registries.BLOCK.getKey(), new Identifier(MOD_ID, "lit_blocks"));
 
 	@Override
 	public void onInitialize() {
